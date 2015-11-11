@@ -2,7 +2,7 @@ var Recorder = React.createClass({
 
   getInitialState: function() {
     return {
-        track: new Track("track"),
+        track: new Track({name: "track"}),
         isRecording: false,
         prevNotes: []
       };
@@ -41,7 +41,11 @@ var Recorder = React.createClass({
     this.state.track.play();
   },
 
-
+  handleSave: function () {
+    TrackAction.save(this.state.track);
+    var newName = prompt("Please name your next track");
+    this.setState({track: new Track({name: newName})});
+  },
 
   render: function() {
     return (
@@ -49,6 +53,7 @@ var Recorder = React.createClass({
         <button onClick={this.handleStart}>Start</button>
         <button onClick={this.handleStop}>Stop</button>
         <button onClick={this.handlePlay}>Play</button>
+        <button onClick={this.handleSave}>Save</button>
       </div>
     );
   }

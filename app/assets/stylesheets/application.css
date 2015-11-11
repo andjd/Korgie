@@ -15,11 +15,23 @@
  */
 
 .organ-key{
+  display: block;
+  float: left;
   background: lightblue;
   padding: 20px;
-  margin: 10px;
+  margin: 5px;
 }
 
 .organ-key.active {
   background: blue;
+}
+
+.organ > div:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+button {
+  padding: 10px;
 }

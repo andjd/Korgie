@@ -36,12 +36,11 @@
 
   dispatcherIndexId: root.AppDispatcher.register(function(payload) {
 
-    var noteAction = payload.noteAction;
-    if (noteAction.actionType == "start") {
-      NoteStore.addNote(noteAction.tone);
+    if (payload.actionType == "start") {
+      NoteStore.addNote(payload.tone);
     }
-    else if (noteAction.actionType == "stop") {
-      NoteStore.removeNote(noteAction.tone);
+    else if (payload.actionType == "stop") {
+      NoteStore.removeNote(payload.tone);
     }
     return true;
   }),
