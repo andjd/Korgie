@@ -1,7 +1,6 @@
 (function (root) {
     var _notes = [];
 
-  // debugger;
   var NoteStore = root.NoteStore = $.extend({}, EventEmitter.prototype, {
 
   all: function() {
@@ -10,7 +9,6 @@
   },
 
   addNote: function(note) {
-    //Only play add a note once?
     if (_notes.indexOf(note) === -1) {
       _notes.push(note);
     }
@@ -39,9 +37,10 @@
   dispatcherIndexId: root.AppDispatcher.register(function(payload) {
 
     var noteAction = payload.noteAction;
-    if (noteAction.actionType == "start"){
+    if (noteAction.actionType == "start") {
       NoteStore.addNote(noteAction.tone);
-    } else if (noteAction.actionType == "stop") {
+    }
+    else if (noteAction.actionType == "stop") {
       NoteStore.removeNote(noteAction.tone);
     }
     return true;

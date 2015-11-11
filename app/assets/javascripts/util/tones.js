@@ -7,3 +7,11 @@ window.TONES = {
   F: 1397,
   G: 1568
 };
+
+window.createToneArray = function() {
+  var tones = [];
+  for (var tone in window.TONES) {
+    tones.push(tone);
+  }
+  return tones;
+};

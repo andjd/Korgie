@@ -1,8 +1,7 @@
 var OrganKey = React.createClass({
   getInitialState: function (){
     return {
-      note: new Note(TONES[this.props.tone]),
-      activeTones: NoteStore.all()
+      note: new Note(TONES[this.props.tone])
     };
   },
 
@@ -11,17 +10,16 @@ var OrganKey = React.createClass({
   },
 
   getActiveTones: function() {
-    this.setState({activeTones: NoteStore.all()});
     if (this.toneIsActive()) {
       this.state.note.start();
     } else {
       this.state.note.stop();
     }
-    console.log(this.state.activeTones);
+    this.forceUpdate();
   },
 
   toneIsActive: function () {
-    return (this.state.activeTones.indexOf(this.props.tone) !== -1);
+    return (NoteStore.all().indexOf(this.props.tone) !== -1);
   },
 
   render: function() {
