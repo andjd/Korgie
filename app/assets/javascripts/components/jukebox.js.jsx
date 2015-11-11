@@ -1,7 +1,8 @@
 var Jukebox = React.createClass({
 
   componentDidMount: function () {
-    TrackStore.on("change", this.getAllTracks);
+    window.TrackStore.on("change", this.getAllTracks);
+    TrackAPI.fetch();
   },
 
   getAllTracks: function() {
@@ -13,7 +14,7 @@ var Jukebox = React.createClass({
     return (
       <ul>
         {
-          TrackStore.all().map(function(track, idx){
+          window.TrackStore.all().map(function(track, idx){
             console.log(track);
             return < TrackPlayer key={idx} track={track} />;
           })

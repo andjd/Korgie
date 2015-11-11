@@ -6,3 +6,9 @@ TrackAction.save = function (track) {
 
   AppDispatcher.dispatch(payload);
 };
+
+TrackAction.load = function (tracks) {
+  var payload = {actionType: "loadTracks", tracks: tracks};
+
+  AppDispatcher.dispatch(payload);
+};

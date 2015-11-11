@@ -2,6 +2,8 @@
 
     var _tracks = [];
 
+
+
     var TrackStore = root.TrackStore = $.extend({}, EventEmitter.prototype, {
 
       all: function () {
@@ -17,6 +19,9 @@
 
         if (payload.actionType == "saveTrack") {
           TrackStore.addTrack(payload.track);
+        }
+        else if (payload.actionType == "loadTracks"){
+          _tracks = _tracks.concat(payload.tracks);
         }
         return true;
       })
