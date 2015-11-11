@@ -1,7 +1,9 @@
 (function(root){
-var AudioContext = root.AudioContext || root.webkitAudioContext;
+  
+  var AudioContext = root.AudioContext || root.webkitAudioContext;
 
-  var ctx = new AudioContext()
+  var ctx = new AudioContext();
+
   var createOscillator = function (freq) {
     var osc = ctx.createOscillator();
     osc.type = "sine";
@@ -28,7 +30,7 @@ var AudioContext = root.AudioContext || root.webkitAudioContext;
     this.gainNode.gain.value = 0.35;
   };
 
-  Note.prototype.stopxw = function() {
+  Note.prototype.stop = function() {
     this.gainNode.gain.value = 0;
   };
 

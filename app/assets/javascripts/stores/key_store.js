@@ -10,16 +10,18 @@
   },
 
   addNote: function(note) {
-    //Only play add a note once time?
+    //Only play add a note once?
     if (_notes.indexOf(note) === -1) {
       _notes.push(note);
     }
+    NoteStore.emitChange();
   },
 
   removeNote: function(note) {
     _notes = _notes.filter(function (n){
       return (note !== n);
     });
+    NoteStore.emitChange();
   },
 
   emitChange: function() {
@@ -42,7 +44,6 @@
     } else if (noteAction.actionType == "stop") {
       NoteStore.removeNote(noteAction.tone);
     }
-    console.log(NoteStore.all())
     return true;
   }),
 });
